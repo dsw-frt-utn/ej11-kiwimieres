@@ -10,52 +10,33 @@ namespace Dsw2026Ej11.Collections;
 //Incluir un método para eliminar un alumno en una determinada posición de la lista
 public class CasoList
 {
-    public List<Alumno> listaAlumno = new List<Alumno>();
+    private List<Alumno> _listaAlumno = new List<Alumno>();
 
     public void AgregarAlumno(Alumno alumnoNuevo)
     {
-        listaAlumno.Add(alumnoNuevo);
+        _listaAlumno.Add(alumnoNuevo);
 
     }
 
     public List<Alumno> RetornarLista()
     {
-        return listaAlumno;
+        return _listaAlumno;
     }
 
     public Alumno? BuscarPorNombre(string nombre)
     {
-        foreach(Alumno alumno in listaAlumno)
-        {
-            if(alumno.Nombre == nombre)
-            {
-                return alumno;
-            }
-        }
-        return null;
+        return _listaAlumno.Find(a => a.Nombre == nombre);
     }
 
     public void EliminarAlumno(Alumno alumnoABorrar)
     {
-        foreach (Alumno alumno in listaAlumno)
-        {
-            if (alumno == alumnoABorrar)
-            {
-                listaAlumno.Remove(alumno);
-            }
-        }
+        _listaAlumno.Remove(alumnoABorrar);
         
     }
 
     public void EliminarAlumnoPorPosicion(int posicionABorrar)
     {
-        foreach (Alumno alumno in listaAlumno)
-        {
-            if (alumno.Id == posicionABorrar)
-            {
-                listaAlumno.Remove(alumno);
-            }
-        }
+        _listaAlumno.RemoveAt(posicionABorrar);
 
     }
 
