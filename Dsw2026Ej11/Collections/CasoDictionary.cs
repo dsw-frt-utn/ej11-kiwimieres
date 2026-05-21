@@ -17,7 +17,7 @@ public class CasoDictionary
         _alumnos.Add(alumnoNuevo.Id, alumnoNuevo);
     }
 
-    public Alumno? buscarAlumno(int clave)
+    public Alumno? BuscarAlumno(int clave)
     {
         if (_alumnos.ContainsKey(clave))
         {
