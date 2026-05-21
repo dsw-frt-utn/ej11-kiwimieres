@@ -1,4 +1,6 @@
-﻿namespace Dsw2026Ej11.Collections;
+﻿using Dsw2026Ej11.Domain;
+
+namespace Dsw2026Ej11.Collections;
 
 /*
  * Para cada punto crear un método que permita:
@@ -15,5 +17,72 @@
  * En todos los casos debe aplicarse LINQ
  */
 public class CasoLinq
-{
+{   
+    //1.
+    public static Libro? GetPrimero(List<Libro> libros)
+    {
+        var primerLibro = libros.FirstOrDefault();
+        return primerLibro;
+    }
+
+    //2.
+    public static Libro? GetUltimo(List<Libro> libros)
+    {
+        var ultimoLibro = libros.LastOrDefault();
+        return ultimoLibro;
+    }
+
+    //3.
+    public static decimal GetTotalPrecios(List<Libro> libros)
+    {
+        var totalPrecios = libros.Sum(l => l.Precio);
+        return totalPrecios;
+    }
+
+    //4.
+    public static decimal GetPromedioPrecios(List<Libro> libros)
+    {
+        var promedioPrecios = libros.Average(l => l.Precio);
+        return promedioPrecios;
+    }
+
+    //5.
+    public static List<Libro> GetListById(List<Libro> libros)
+    {
+        return libros.Where(l => l.Id > 15).ToList();
+    }
+
+    //6.
+    public static List<string> GetLibros(List<Libro> libros)
+    {
+        var listaLibros = libros.Select(l => $"{l.Titulo}, {l.Precio:C}");
+        return listaLibros.ToList();
+    }
+
+    //7. 
+    public static Libro? GetMayorPrecio(List<Libro> libros)
+    {
+        var libroMasCaro = libros.OrderByDescending(l => l.Precio).FirstOrDefault();
+        return libroMasCaro;
+    }
+
+    //8. 
+    public static Libro? GetMenorPrecio(List<Libro> libros)
+    {
+        var libroMasBarato = libros.OrderBy(l => l.Precio).FirstOrDefault();
+        return libroMasBarato;
+    }
+
+    //9. 
+    public static List<Libro> GetMayorPromedio(List<Libro> libros)
+    {
+        var promedio = libros.Average(l => l.Precio);
+        return libros.Where(l => l.Precio > promedio).ToList();
+    }
+
+    //10. 
+    public static List<Libro> GetLibrosDescendente(List<Libro> libros)
+    {
+        return libros.OrderByDescending(l => l.Titulo).ToList();
+    }
 }
